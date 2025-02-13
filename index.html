@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .tulip {
+            width: 100px;
+            height: 150px;
+        }
+        .glow {
+            filter: drop-shadow(0 0 15px pink);
+            animation: glow 2s infinite alternate;
+        }
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 5px pink); }
+            100% { filter: drop-shadow(0 0 20px pink); }
+        }
+        .postcard-container {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .postcard {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        .postcard-inner {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+        }
+        .postcard:hover .postcard-inner {
+            transform: rotateY(180deg);
+        }
+        .postcard-front, .postcard-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+        }
+        .postcard-front {
+            background: pink;
+        }
+        .postcard-back {
+            background: white;
+            transform: rotateY(180deg);
+            color: black;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="enchanted.mp3" type="audio/mp3">
+    </audio>
+    <div class="container">
+        <svg class="tulip glow" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <path fill="pink" d="M32 2c-4 10-10 14-14 14s-6-4-6-4 0 6 2 10c2 5 6 6 6 6s-5 1-6 8c-1 8 6 18 18 22 12-4 19-14 18-22-1-7-6-8-6-8s4-1 6-6c2-4 2-10 2-10s-2 4-6 4-10-4-14-14z"/>
+        </svg>
+        <h1>Will you be my Valentine?</h1>
+    </div>
+    <div class="postcard-container">
+        <div class="postcard" onclick="flipPostcard()">
+            <div class="postcard-inner">
+                <div class="postcard-front">💌 Click Me!</div>
+                <div class="postcard-back">I love you! ❤️</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
